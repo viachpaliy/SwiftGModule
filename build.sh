@@ -25,7 +25,15 @@ gir2swift -p ${GIR_DIR}/GLib-2.0.gir "${GIR}" | sed -f ${MODULE}.sed > Sources/$
 echo  > Sources/SwiftGModule.swift "import CGLib"
 echo >> Sources/SwiftGModule.swift "import GLib"
 echo >> Sources/SwiftGModule.swift ""
+grep 'public protocol' Sources/${MODULE}.swift | cut -d' ' -f3 | cut -d: -f1 | sort -u | sed -e 's/^\(.*\)/public typealias _GModule_\1 = \1/' >> Sources/SwiftGModule.swift
+echo >> Sources/SwiftGModule.swift ""
+echo >> Sources/SwiftGModule.swift ""
+grep 'public class' Sources/${MODULE}.swift | cut -d' ' -f3 | cut -d: -f1 | sort -u | sed -e 's/^\(.*\)/public typealias _GModule_\1 = \1/' >> Sources/SwiftGModule.swift
+echo >> Sources/SwiftGModule.swift ""
 echo >> Sources/SwiftGModule.swift "public extension GModule {"
+grep 'public protocol' Sources/${MODULE}.swift | cut -d' ' -f3 | cut -d: -f1 | sort -u | sed -e 's/^\(.*\)/    public typealias \1 = _GModule_\1/' >> Sources/SwiftGModule.swift
+echo >> Sources/SwiftGModule.swift ""
+grep 'public class' Sources/${MODULE}.swift | cut -d' ' -f3 | cut -d: -f1 | sort -u | sed -e 's/^\(.*\)/    public typealias \1 = _GModule_\1/' >> Sources/SwiftGModule.swift
 grep 'public typealias' Sources/${MODULE}.swift | sed 's/^/    /' >> Sources/SwiftGModule.swift
 echo >> Sources/SwiftGModule.swift "}"
 exec swift build $CCFLAGS $LINKFLAGS "$@"
