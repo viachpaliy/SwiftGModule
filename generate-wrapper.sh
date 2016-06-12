@@ -22,6 +22,9 @@ if [ ! -e "${GIR}" ] ; then
 	echo "and can be found in /usr /usr/local or by pkg-config!"
 	exit 1
 fi
+for gen in Packages/*/generate-wrapper.sh ; do
+        ( cd `dirname $gen` && ./`basename $gen` )
+done
 gir2swift -p ${GIR_DIR}/GLib-2.0.gir "${GIR}" | sed -f ${Module}.sed > Sources/${Module}.swift
 echo  > Sources/Swift${Mod}.swift "import CGLib"
 echo >> Sources/Swift${Mod}.swift "import GLib"
