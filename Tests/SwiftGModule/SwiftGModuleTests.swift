@@ -1,18 +1,22 @@
 import XCTest
-@testable import SwiftGModule
+@testable import GModule
 
 class SwiftGModuleTests: XCTestCase {
 
-	func testExample() {
-		// This is an example of a functional test case.
-		// Use XCTAssert and related functions to verify your tests produce the correct results.
-	}
+    func testSupported() {
+        XCTAssertTrue(module_supported())
+    }
+
+    func testNonExistent() {
+        XCTAssertNil(ModuleRef.open(file_name: "non/existent", flags: ModuleFlags(rawValue: UInt32(0))))
+    }
 
 }
 extension SwiftGModuleTests {
-	static var allTests : [(String, SwiftGModuleTests -> () throws -> Void)] {
-		return [
-			("testExample", testExample),
-		]
-	}
+    static var allTests : [(String, (SwiftGModuleTests) -> () throws -> Void)] {
+        return [
+            ("testSupported",   testSupported),
+            ("testNonExistent", testNonExistent),
+        ]
+    }
 }
