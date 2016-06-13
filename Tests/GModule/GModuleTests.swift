@@ -1,7 +1,7 @@
 import XCTest
 @testable import GModule
 
-class SwiftGModuleTests: XCTestCase {
+class GModuleTests: XCTestCase {
 
     func testSupported() {
         XCTAssertTrue(module_supported())
@@ -12,8 +12,8 @@ class SwiftGModuleTests: XCTestCase {
     }
 
 }
-extension SwiftGModuleTests {
-    static var allTests : [(String, (SwiftGModuleTests) -> () throws -> Void)] {
+extension GModuleTests {
+    static var allTests : [(String, (GModuleTests) -> () throws -> Void)] {
         return [
             ("testSupported",   testSupported),
             ("testNonExistent", testNonExistent),

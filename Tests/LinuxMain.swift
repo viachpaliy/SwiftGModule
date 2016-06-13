@@ -1,6 +1,6 @@
 import XCTest
-@testable import SwiftGModuleTestSuite
+@testable import GModuleTestSuite
 
 XCTMain([
-	 testCase(SwiftGModuleTests.allTests),
+	 testCase(GModuleTests.allTests),
 ])
