@@ -4,11 +4,11 @@ import XCTest
 class GModuleTests: XCTestCase {
 
     func testSupported() {
-        XCTAssertTrue(module_supported())
+        XCTAssertTrue(moduleSupported())
     }
 
     func testNonExistent() {
-        XCTAssertNil(ModuleRef.open(file_name: "non/existent", flags: ModuleFlags(rawValue: UInt32(0))))
+        XCTAssertNil(ModuleRef.open(fileName: "non/existent", flags: ModuleFlags(rawValue: UInt32(0))))
     }
 
 }
