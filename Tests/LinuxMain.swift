@@ -1,5 +1,5 @@
 import XCTest
-@testable import GModuleTestSuite
+@testable import GModuleTests
 
 XCTMain([
 	 testCase(GModuleTests.allTests),
