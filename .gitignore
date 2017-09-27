@@ -2,6 +2,7 @@
 /.build
 /Packages
 /*.xcodeproj
+Package.resolved
 Package.pins
 *-*.swift
 Sources/SwiftGModule.swift
